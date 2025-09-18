@@ -1,4 +1,4 @@
-package com.example.emos.wx.common.util;
+package com.example.simple_template.common.util;
 
 
 import org.apache.http.HttpStatus;

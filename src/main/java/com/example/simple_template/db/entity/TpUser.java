@@ -1,4 +1,4 @@
-package com.example.simple_template.db.pojo;
+package com.example.simple_template.db.entity;
 
 import lombok.Data;
 
@@ -7,11 +7,11 @@ import java.util.Date;
 
 /**
  * 用户表
- * tb_user
+ * tp_user
  */
 @Data
 public class TpUser implements Serializable {
-    private Integer id;
+    private Long id;
 
     private String openId;
 

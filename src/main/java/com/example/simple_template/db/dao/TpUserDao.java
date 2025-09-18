@@ -1,26 +1,19 @@
-package com.example.emos.wx.db.dao;
+package com.example.simple_template.db.dao;
 
-import com.example.emos.wx.db.pojo.TbUser;
+import com.example.simple_template.db.entity.TpUser;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 @Mapper
-public interface TbUserDao {
-    public boolean haveRootUser();
+public interface TpUserDao {
 
-    public int insert(HashMap param);
+    public Long insert(HashMap param);
 
-    public Integer searchIdByOpenId(String openId);
+    public TpUser select(Long id);
 
-    public Set<String> searchUserPermissions(int userId);
+    public Set<String> searchUserPermissions(Long userId);
 
-    public TbUser searchUserByOpenId(String openId);
-
-    public TbUser searchById(int userId);
-
-    public void updateTrial(HashMap param);
-
-    public void updateInfo(HashMap param);
 }

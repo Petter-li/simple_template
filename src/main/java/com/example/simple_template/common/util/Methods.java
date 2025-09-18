@@ -1,12 +1,11 @@
-package com.example.emos.wx.common.util;
+package com.example.simple_template.common.util;
 
 import cn.hutool.core.util.StrUtil;
-import com.example.emos.wx.config.shiro.JwtUtil;
-import com.example.emos.wx.exception.EmosException;
+import com.example.simple_template.exception.OwnException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Random;
 
 
@@ -15,6 +14,7 @@ public class Methods {
 
     @Autowired
     private JwtUtil jwtUtil;
+
 
     /**
      * 根据请求中的token获取用的userId
@@ -49,7 +49,7 @@ public class Methods {
 
             return sb.toString();
         }else {
-            throw new EmosException("请指定字符串长度");
+            throw new OwnException("请指定字符串长度");
         }
 
     }

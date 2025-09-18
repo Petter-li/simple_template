@@ -3,16 +3,6 @@ spring:
   profiles:
     active: dev
 
-mybatis:
-  mapper-locations: classpath*:mapper/*.xml
-  type-aliases-package: com.example.emos.wx.db.pojo
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    map-underscore-to-camel-case: true
-    lazy-loading-enabled: false
-    aggressive-lazy-loading: false
-    cache-enabled: false
-
 logging:
   level:
     root: info
