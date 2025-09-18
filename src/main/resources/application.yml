@@ -1,0 +1,22 @@
+#激活不同环境的配置文件
+spring:
+  profiles:
+    active: dev
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.example.emos.wx.db.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    lazy-loading-enabled: false
+    aggressive-lazy-loading: false
+    cache-enabled: false
+
+logging:
+  level:
+    root: info
+    com.example.emos.wx.db.dao: debug
+    org.mybatis: debug
+  pattern:
+    console: "%d{HH:mm:ss}  %-5level  %msg%n"
