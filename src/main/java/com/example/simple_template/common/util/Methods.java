@@ -53,4 +53,23 @@ public class Methods {
         }
 
     }
+
+    /**
+     * 随机生成数字字符串
+     * @param digits
+     * @return
+     */
+    public String getRandomIntString(Integer digits) {
+        if(digits > 0) {
+            StringBuilder sb = new StringBuilder();
+            Random random = new Random();
+            for (int i = 0; i < digits; i++) {
+                int index = random.nextInt(10);
+                sb.append(index);
+            }
+            return sb.toString();
+        }else {
+            throw new OwnException("请指定数字长度");
+        }
+    }
 }

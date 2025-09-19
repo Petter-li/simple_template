@@ -60,3 +60,7 @@ logging:
     root: info
   pattern:
     console: "%d{HH:mm:ss}  %-5level  %msg%n"
+
+project:
+  login:
+    expire: 10

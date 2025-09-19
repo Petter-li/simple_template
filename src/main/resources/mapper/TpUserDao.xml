@@ -4,11 +4,14 @@
     <insert id="insert" parameterType="HashMap">
         INSERT INTO tp_user
         SET
-        open_id = #{openId},
-        password = #{password},
         name = #{name},
         tel = #{tel},
-        email = #{openId},
+        <if test="openId!=null">
+            open_id = #{openId},
+        </if>
+        <if test="password!=null">
+            password = #{password},
+        </if>
         <if test="photo!=null">
             photo = #{photo},
         </if>
