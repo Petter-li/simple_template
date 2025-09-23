@@ -17,7 +17,7 @@ public class JwtUtil {
     @Value("${template.jwt.expire}")
     private long expire;
 
-    public String createToken(int userId) {
+    public String createToken(Long userId) {
         Date now = new Date();
         Date expireDate = new Date(now.getTime() + expire * 1000);
 

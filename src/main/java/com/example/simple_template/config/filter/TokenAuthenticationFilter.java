@@ -63,7 +63,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
             String refreshToken = redisTemplate.opsForValue().get("token:" + userId);
             if (StrUtil.isNotBlank(refreshToken)) {
                 // Generate new token
-                String newToken = jwtUtil.createToken(Integer.parseInt(userId));
+                String newToken = jwtUtil.createToken(Long.parseLong(userId));
                 // Store new token in Redis
                 redisTemplate.opsForValue().set("token:" + userId, newToken, cacheExpire, TimeUnit.DAYS);
                 // Add new token to response header

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.emos.wx.db.dao.TbUserDao">
+<mapper namespace="com.example.simple_template.db.dao.TpUserDao">
     <insert id="insert" parameterType="HashMap">
         INSERT INTO tp_user
         SET
@@ -24,6 +24,9 @@
     </insert>
     <select id="select" parameterType="Long" resultType="TpUser">
         SELECT * FROM tp_user WHERE id = #{id} AND status = 1
+    </select>
+    <select id="selectByTel" parameterType="String" resultType="TpUser">
+        SELECT * FROM tp_user WHERE tel = #{tel} AND status = 1
     </select>
     <select id="searchUserPermissions" parameterType="Long" resultType="String">
         SELECT DISTINCT p.permission_name

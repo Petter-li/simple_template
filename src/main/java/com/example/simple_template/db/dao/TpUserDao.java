@@ -14,6 +14,8 @@ public interface TpUserDao {
 
     public TpUser select(Long id);
 
+    public TpUser selectByTel(String tel);
+
     public Set<String> searchUserPermissions(Long userId);
 
 }

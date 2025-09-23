@@ -17,5 +17,7 @@ public interface TpUserService {
 
     public TpUser searchById(Long userId);
 
+    public TpUser searchByTel(String tel);
+
     public String makeCaptcha(String tel);
 }
