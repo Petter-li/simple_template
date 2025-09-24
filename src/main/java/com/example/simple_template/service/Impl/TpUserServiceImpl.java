@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Set;
@@ -46,7 +47,9 @@ public class TpUserServiceImpl implements TpUserService {
             user.put("role","[1]");
             user.put("root",false);
             user.put("status",1);
-            return tpUserDao.insert(user);
+            tpUserDao.insert(user);
+            BigInteger bigId = (BigInteger) user.get("id");
+            return bigId.longValue();
         }else if(userSource == UserSourceEnum.WX) {
             // TODO 待对接微信
         }

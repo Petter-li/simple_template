@@ -3,19 +3,26 @@ package com.example.simple_template.common.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 @Component
 public class JwtUtil {
 
-    @Value("${template.jwt.secret}")
-    private String secret;
+    private SecretKey secretKey;
 
     @Value("${template.jwt.expire}")
     private long expire;
+
+    @PostConstruct
+    public void init() {
+        this.secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+    }
 
     public String createToken(Long userId) {
         Date now = new Date();
@@ -26,14 +33,15 @@ public class JwtUtil {
                 .setSubject(userId + "")
                 .setIssuedAt(now)
                 .setExpiration(expireDate)
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(secretKey, SignatureAlgorithm.HS512)
                 .compact();
     }
 
     public Claims getClaimByToken(String token) {
         try {
-            return Jwts.parser()
-                    .setSigningKey(secret)
+            return Jwts.parserBuilder()
+                    .setSigningKey(secretKey)
+                    .build()
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {

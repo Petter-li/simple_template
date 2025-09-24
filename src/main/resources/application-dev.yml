@@ -44,7 +44,6 @@ spring:
 # JWT configuration
 template:
   jwt:
-    secret: Secret7777
     expire: 5 # in days
     cacheExpire: 10 # in days
 
